@@ -1,3 +1,10 @@
+:root{
+	--red: #B2533E;
+	--yellow: #FCE09B;
+	--green: #B5CB99;
+	--dark-green: #356C52; 
+}
+
 * {
 	padding: 0;
 	margin: 0;
@@ -32,16 +39,20 @@ main.main {
 }
 
 .special-word-header {
-	color: rgb(252, 224, 155);
+	color: var(--yellow);
 }
 
 .special-word-header-logo {
-	color: #B2533E;
+	color: var(--red);
+	font-weight: 700;
+}
+
+h5 {
 	font-weight: 700;
 }
 
 .header-bottom {
-	background: url(images/header-bg.jpg)no-repeat;
+	background: url(assets/images/header-bg.jpg)no-repeat;
 	background-size: cover;
 	height: 100vh;
 	width: 100%;
@@ -73,7 +84,7 @@ main.main {
 .button-header {
   appearance: none;
   background-color: transparent;
-  border: 2px solid #B5CB99;
+  border: 2px solid var(--green);
   border-radius: 15px;
   box-sizing: border-box;
   color: black;
@@ -121,6 +132,10 @@ main.main {
 	width: 90%;
 }
 
+p {
+	text-align: center;
+}
+
 footer {
 	padding: 3vh;
 }
@@ -130,4 +145,27 @@ footer {
 	font-size: 15px;
 	height: 100%;
 	margin: 0 auto;
+}
+
+.reason-item {
+	box-shadow: rgba(0, 0, 0, 0.25) 0 0 45px;
+	transition: 0.5s;
+	color:var(--dark-green);
+}
+
+.reason-item:hover {
+	background: var(--dark-green);
+}
+
+.reason-item *{
+	transition: 0.5s;
+}
+
+.reason-item:hover *{
+	color: var(--yellow) !important;
+}
+
+.reasons-why {
+	padding-top: 5vh;
+	padding-bottom: 5vh;
 }
