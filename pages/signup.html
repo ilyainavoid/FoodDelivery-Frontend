@@ -14,7 +14,7 @@
 
 </head>
 <body>
-	<section class="signup vh-100 gradient-bg">
+	<section class="signup gradient-bg">
 		<div class="container py-5 h-100">
 			<div class="row justify-content-center align-items-center h-100">
 				<div class="col-12 col-lg-9 col-xl-7">
@@ -92,6 +92,19 @@
 									</div>
 								</div>
 
+								<div id="address-section-main">
+									<div class="row">
+										<div class="col">
+											<div class="form-outline" id="address-section">
+												<label for="region" class="form-label">Субъект РФ:</label>
+												<select name="region" id="region" class="form-select form-select-lg mb-3" autocomplete="on" disabled>
+													<option value="">Томская область</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
 								<div class="mt-4 pt-2">
 									<input class="btn btn-outline-success btn-lg" type="submit" value="Зарегистрироваться">
 								</div>
@@ -103,5 +116,8 @@
 			</div>
 		</div>
 	</section>
+
+	<script src="../scripts/signup.js"></script>
+	<script src="../scripts/address-section.js"></script>
 </body>
 </html>
