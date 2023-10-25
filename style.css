@@ -147,6 +147,16 @@ footer {
 	margin: 0 auto;
 }
 
+.menu-item {
+	box-shadow: rgba(0, 0, 0, 0.25) 0 0 45px;
+	background: #ffffff;
+	max-width: 100%;
+}
+
+.best-food {
+	background: var(--yellow);
+}
+
 .reason-item {
 	box-shadow: rgba(0, 0, 0, 0.25) 0 0 45px;
 	transition: 0.5s;
