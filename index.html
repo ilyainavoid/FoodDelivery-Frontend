@@ -3,11 +3,173 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
+	<title>Food delivery</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header-top">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<div class="container w-75">
+						<a class="navbar-brand" href="#">Good<span class='special-word-header-logo'>Food</span></a>
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarText">
+							<ul class="shown-in-header navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="#">Меню</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link active" href="#">Заказы</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link active" href="#">Корзина</a>
+								</li>
+							</ul>
+							<span class="shown-in-header navbar-text">
+								<button class="button-header">Войти</button>
+							</span>
+						</div>
+					</div>
+				</nav>
+		 	</div>
+			<div class="header-bottom d-flex justify-content-around align-items-center">
+				<div class="container w-75">
+					<div class="row">
+						<div class="col-md-6 d-flex justify-content-center flex-column">
+							<h1>Самая <span class='special-word-header'>вкусная</span> доставка в твоем городе!</h1>
+							<button class="button-header" id="order-button-header">Заказать</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<main class="main">
+			<section class="reasons-why">
+				<div class="container w-75">
+					<div class="row">
+						<div class="col-xl-4">
+							<div class="reason-item rounded m-3">
+								<div class="p-4 d-flex justify-content-around align-items-center flex-column">
+									<i class="fa-solid fa-clock fa-10x mb-4"></i>
+									<h3>Скорость доставки</h3>
+									<p>Наша команда нацелена на обеспечение максимальной скорости доставки. Мы стремимся доставить вашу еду в самые кратчайшие сроки,
+										 чтобы вы могли насладиться свежими блюдами, не ждать лишнего времени. Мы постоянно оптимизируем наши маршруты и используем
+										  передовые технологии для быстрой доставки</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-4">
+							<div class="reason-item rounded m-3">
+								<div class="p-4 d-flex justify-content-around align-items-center flex-column">
+									<i class="fa-solid fa-pizza-slice fa-10x mb-4"></i>
+									<h3>Качество продуктов</h3>
+									<p>Мы уделяем особое внимание качеству всех ингредиентов и блюд, предлагаемых в нашем меню. 
+										Мы тщательно выбираем поставщиков, следим за свежестью продуктов и следуем высоким стандартам приготовления.
+										 Наши повара готовят каждое блюдо с заботой о его вкусе и внешнем виде, чтобы удовлетворить даже самых взыскательных клиентов</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-4">
+							<div class="reason-item rounded m-3">
+								<div class="p-4 d-flex justify-content-around align-items-center flex-column">
+									<i class="fa-solid fa-hand-holding-dollar fa-10x mb-4"></i>
+									<h3>Низкие цены</h3>
+									<p>Мы понимаем, что экономия также важна для наших клиентов. Поэтому мы предлагаем конкурентоспособные и доступные цены на все блюда в нашем меню.
+										 Мы постоянно работаем над оптимизацией расходов, чтобы предоставить вам отличное соотношение цена-качество.
+										  Наши акции и скидки позволяют вам сэкономить еще больше</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="best-food">
+				<div class="container w-75">
+					<div class="row small-menu-heading">
+						<div class="col-12 p-4 d-flex justify-content-center align-items-center">
+							<h2>Лучшие блюда</h2>
+						</div>
+					</div>
+					<div class="row pb-5">
+						<div class="col-xl-3">
+							<div class="menu-item rounded mb-3">
+								<div class="p-4 d-flex justify-content-around align-items-center flex-column">
+									<div class="img-place">
+										<img src="" alt="">
+									</div>
+									<h3>4 сыра</h3>
+									<h4>Category: Pizza</h4>
+									<p>XXXXXXXXXXXXX</p>
+									<p class="desc">4 сыра: «Моцарелла», «Гауда», «Фета», «Дор-блю», сливочно-сырный соус, пряные травы</p>
+									<p>360 руб.</p>
+								</div>
+						</div>
+					</div>
+					<div class="col-xl-3">
+							<div class="menu-item rounded mb-3">
+								<div class="p-4 d-flex justify-content-around align-items-center flex-column">
+									<div class="img-place">
+										<img src="" alt="">
+									</div>
+									<h3>Wok а-ля Диаблo</h3>
+									<h4>Category: Wok</h4>
+									<p>XXXXXXXXXXXXX</p>
+									<p class="desc">Пшеничная лапша обжаренная на воке с колбасками пепперони, маслинами, сладким перцем и перцем халапеньо в томатном соусе с добавлением петрушки. БЖУ на 100 г. Белки, г — 8,18 Жиры, г — 16,33 Углеводы, г — 20,62</p>
+									<p>330 руб.</p>
+								</div>
+						</div>
+					</div>
+					<div class="col-xl-3">
+							<div class="menu-item rounded mb-3">
+								<div class="p-4 d-flex justify-content-around align-items-center flex-column">
+									<div class="img-place">
+										<img src="" alt="">
+									</div>
+									<h3>Party BBQ</h3>
+									<h4>Category: Pizza</h4>
+									<p>XXXXXXXXXXXXX</p>
+									<p class="desc">Бекон, соленый огурчик, брусника, сыр «Моцарелла», сыр «Гауда», соус BBQ</p>
+									<p>480 руб.</p>
+								</div>
+						</div>
+					</div>
+					<div class="col-xl-3">
+							<div class="menu-item rounded mb-3">
+								<div class="p-4 d-flex justify-content-around align-items-center flex-column">
+									<div class="img-place">
+										<img src="" alt="">
+									</div>
+									<h3>Wok болоньезе</h3>
+									<h4>Category: Wok</h4>
+									<p>XXXXXXXXXXXXX</p>
+									<p class="desc">Пшеничная лапша обжаренная на воке с фаршем (Говядина/свинина) и овощами (шампиньоны, перец сладкий, лук красный) в томатном соусе с добавлением чесночно–имбирной заправки и петрушки. БЖУ на 100 г. Белки, г — 8,07 Жиры, г — 15,38 Углеводы, г — 23,22</p>
+									<p>290 руб.</p>
+								</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="footer d-flex justify-content-around align-items-center">
+			<div class="conteiner w-75">
+				<div class="row">
+					<div class="col d-flex justify-content-around align-items-center">
+						<p class="footer-text">Developed by Ilya</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="scripts/app.js"></script>
 </body>
 </html>
