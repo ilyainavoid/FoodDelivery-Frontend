@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 	const apiEndpoint = 'https://food-delivery.kreosoft.ru/api/address/search';
 	const appendPoint = document.getElementById('address-section-main')
-	console.log(appendPoint)
 	let currentObject = '{"objectId": 1281271, "objectGuid": "889b1f3a-98aa-40fc-9d3d-0f41192758ab", "text": "обл Томская","objectLevel": "Region","objectLevelText": "Субъект РФ"}';
 	let currentObjectId = 1281271;
 	let numberOfLevel = 1;
@@ -17,8 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
 					const option = document.createElement('option');
 					option.value = JSON.stringify(element);
 					option.textContent = element["text"];
-					console.log(option)
-					console.log(document.getElementById(numberOfLevel));
 					document.getElementById(numberOfLevel).appendChild(option);
 				});
 			});
@@ -54,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (currentSelect.id < numberOfLevel) {
 				while(numberOfLevel != currentSelect.id) {
 					let indexToDelete = numberOfLevel;
-					console.log(indexToDelete);
 					const selectToDelete = document.getElementById(indexToDelete);
 					const labelToDelete = document.getElementById(`label${indexToDelete}`);
 					selectToDelete.remove();
