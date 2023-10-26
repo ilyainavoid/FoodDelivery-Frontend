@@ -59,3 +59,27 @@ function validateForm() {
 
 	submitRegistration(user);
 }
+
+function submitRegistration(user) {
+	console.log(user);
+	const options = {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(user)
+	};
+
+	fetch('https://food-delivery.kreosoft.ru/api/account/register', options)
+  .then(response => {
+    if (response) {
+      return response.json();
+    }
+  })
+  .then(data => {
+    console.log("API Response:", data);
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });
+}
