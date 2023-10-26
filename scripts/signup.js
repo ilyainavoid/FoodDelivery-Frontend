@@ -37,8 +37,8 @@ function validateForm() {
 		return;
 	}
 
-	if (password.length < 10) {
-    alert("Пароль должен быть длиннее 10 символов!");
+	if (password.length < 10 && /\d/.test(password)) {
+    alert("Пароль должен быть длиннее 10 символов и содержать хотя бы одну цифру!");
     return;
   }
 
@@ -46,4 +46,16 @@ function validateForm() {
 		alert("Номер телефона указан неправильно!");
 		return;
 	}
+
+	const user = {
+		fullName: `${name} ${surname} ${patronymic}`,
+		password: password,
+		email: email,
+		addressId: addressId,
+		birthDate: birthday,
+		gender: gender,
+		phoneNumber: cellphone
+	};
+
+	submitRegistration(user);
 }
