@@ -1,9 +1,10 @@
+const apiEndpoint = 'https://food-delivery.kreosoft.ru/api/address/search';
+const appendPoint = document.getElementById('address-section-main')
+let currentObject = '{"objectId": 1281271, "objectGuid": "889b1f3a-98aa-40fc-9d3d-0f41192758ab", "text": "обл Томская","objectLevel": "Region","objectLevelText": "Субъект РФ"}';
+let currentObjectId = 1281271;
+let numberOfLevel = 1;
+
 document.addEventListener('DOMContentLoaded', function () {
-	const apiEndpoint = 'https://food-delivery.kreosoft.ru/api/address/search';
-	const appendPoint = document.getElementById('address-section-main')
-	let currentObject = '{"objectId": 1281271, "objectGuid": "889b1f3a-98aa-40fc-9d3d-0f41192758ab", "text": "обл Томская","objectLevel": "Region","objectLevelText": "Субъект РФ"}';
-	let currentObjectId = 1281271;
-	let numberOfLevel = 1;
 
 	function generateOptions() {
 		const option = document.createElement('option');
