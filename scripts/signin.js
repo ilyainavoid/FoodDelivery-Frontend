@@ -37,7 +37,8 @@ function submitForm() {
 		}
 		else {
 			alert("Авторизация прошла успешно!")
-			console.log(data);
+			const token = data['token'];
+			setCookie("userToken", token, 7);
 			window.location.href = "../index.html"
 		}
   })

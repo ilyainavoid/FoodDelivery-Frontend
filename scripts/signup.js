@@ -78,6 +78,8 @@ function submitRegistration(user) {
   })
   .then(data => {
     console.log("API Response:", data);
+		const token = data['token'];
+		setCookie("userToken", token, 7);
 		alert("Регистрация прошла успешно!");
   })
   .catch(error => {
