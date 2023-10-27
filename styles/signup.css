@@ -11,8 +11,17 @@
 	--dark-green: #356C52; 
 }
 
+body {
+	min-height: 100vh;
+}
+
+h3 {
+	font-weight: 700;
+}
 
 .gradient-bg {
+	min-height: 100vh;
+	
 	/* fallback for old browsers */
 	background: var(--dark-green);
 	
