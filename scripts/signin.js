@@ -11,4 +11,34 @@ function submitForm() {
 		alert("Адрес эл. почты введен некорректно!");
 		return;
 	}
+
+	const loginData = {
+		email: email,
+		password: password
+	}
+
+	const options = {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(loginData)
+	};
+
+	fetch('https://food-delivery.kreosoft.ru/api/account/login', options)
+  .then(response => {
+    if (response) {
+      return response.json();
+    }
+  })
+  .then(data => {
+		if(data['message'] === "Login failed") {
+			alert("Неверный логин или пароль!")
+		}
+		else {
+			alert("Авторизация прошла успешно!")
+			console.log(data);
+			window.location.href = "../index.html"
+		}
+  })
 }
