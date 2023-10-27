@@ -25,3 +25,20 @@ if (authToken) {
 			element.style.display = "block";
 	});
 }
+
+if (isAuthorized) {
+	const profileLink = document.querySelector(".profile-link");
+	const apiEndpoint = "https://food-delivery.kreosoft.ru/api/account/profile"
+	const options = {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+			"Authorization": `Bearer ${authToken}`
+		},
+	};
+	fetch(apiEndpoint, options)
+		.then(response => response.json())
+		.then(data => {
+			profileLink.textContent = data['email'];
+		})
+}
