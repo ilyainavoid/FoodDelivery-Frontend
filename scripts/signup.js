@@ -37,7 +37,7 @@ function validateForm() {
 		return;
 	}
 
-	if (password.length < 10 && /\d/.test(password)) {
+	if (password.length < 10 || !/\d/.test(password)) {
     alert("Пароль должен быть длиннее 10 символов и содержать хотя бы одну цифру!");
     return;
   }
@@ -78,6 +78,7 @@ function submitRegistration(user) {
   })
   .then(data => {
     console.log("API Response:", data);
+		alert("Регистрация прошла успешно!");
   })
   .catch(error => {
     console.error("Error:", error);
