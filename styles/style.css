@@ -52,7 +52,7 @@ h5 {
 }
 
 .header-bottom {
-	background: url(assets/images/header-bg.jpg)no-repeat;
+	background: url(../assets/images/header-bg.jpg)no-repeat;
 	background-size: cover;
 	height: 100vh;
 	width: 100%;
@@ -147,6 +147,12 @@ footer {
 	margin: 0 auto;
 }
 
+.button-header > a {
+	text-decoration: none;
+	color:white;
+	font-weight: 700;
+}
+
 .menu-item {
 	box-shadow: rgba(0, 0, 0, 0.25) 0 0 45px;
 	background: #ffffff;
@@ -178,4 +184,54 @@ footer {
 .reasons-why {
 	padding-top: 5vh;
 	padding-bottom: 5vh;
+}
+
+.unauthorized {
+	display: none;
+}
+
+.authorized {
+	display: none;
+}
+
+.img-place {
+	width: auto;
+	height: auto;
+	overflow: hidden;
+}
+
+.img-place img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.desc {
+	color:gray;
+}
+
+h2 {
+	font-weight: 700;
+}
+
+.btn > a {
+	text-decoration: none;
+	color:white;
+	font-weight: 700;
+}
+
+.menu-button > a {
+	width: 20vw;
+	height: 7vh;
+	color: black;
+}
+
+.menu-button:hover > a {
+	width: 20vw;
+	height: 7vh;
+	color: var(--yellow);
+}
+
+.menu-button {
+	width: 20vw;
+	height: 7vh;
 }
