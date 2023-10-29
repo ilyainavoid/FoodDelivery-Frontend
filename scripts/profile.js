@@ -1,5 +1,5 @@
 const authToken = getToken("userToken");
-const apiEndpoint = "https://food-delivery.kreosoft.ru/api/account/profile";
+const apiEndpointProfile = "https://food-delivery.kreosoft.ru/api/account/profile";
 const options = {
 	method: "GET",
 	headers: {
@@ -8,12 +8,11 @@ const options = {
 	}
 };
 
-let currentLevel = 1;
-
+isProfile = true;
 
 function checkIfAuthorized() {
 	if (authToken) {
-		fetch(apiEndpoint, options)
+		fetch(apiEndpointProfile, options)
 		.then(response => {
 			if (response.ok) {
 				return response.json();
@@ -64,7 +63,41 @@ function fillData(user) {
 	}
 	phone.value = user['phoneNumber'];
 	email.value = user['email'];
+	forProfile = true;
+	getAddressChain(user['address'])
+}
 
+function getAddressChain(userAddressId) {
+	const apiEndpointAddress = "https://food-delivery.kreosoft.ru/api/address/getaddresschain"
+	fetch(`${apiEndpointAddress}?objectGuid=${userAddressId}`, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		}
+	})
+		.then(response => {
+			if (response.ok) {
+				return response.json();
+			} else {
+				return;
+			}
+		})
+		.then(data => {
+			if(data) {
+				controlProfileForm(data);
+				return;
+			}
+			else {
+				console.log(data)
+				// alert("Время действия токена истекло!");
+				// window.location.reload();
+				// window.location.href = "signin.html"
+				return;
+			}
+		})
+		.catch(error => {
+			console.error("Error:", error);
+		});
 }
 
 document.addEventListener('DOMContentLoaded', function () {
