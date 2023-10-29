@@ -9,6 +9,7 @@ function generateOptions() {
 	const option = document.createElement('option');
 	option.textContent = " ";
 	document.getElementById(numberOfLevel).appendChild(option);
+	console.log(currentObjectId);
 	fetch(`${apiEndpoint}?parentObjectId=${currentObjectId}`)
 		.then(response => response.json())
 		.then(data => {
@@ -85,6 +86,7 @@ function buildProfileForm(chain) {
 		newSelect.id = i+1;
 		newSelect.className = "form-select form-select-lg mb-3";
 		newSelect.setAttribute("name", newSelect.id);
+		newSelect.setAttribute("disabled", true);
 
 		nameOfLevel.textContent = chain[i]['objectLevelText'];
 
@@ -118,6 +120,32 @@ function buildProfileForm(chain) {
 
 function controlProfileForm(chain) {
 	buildProfileForm(chain);
+	numberOfLevel = chain.length;
+	let isEdited = false;
+	const editButton = document.getElementById('edit-button');
+	editButton.addEventListener('click', () => {
+		if (editButton.textContent === "Сохранить") {
+			const selects = document.querySelectorAll('select');
+			for (let i = 1; i < selects.length; i++) {
+				selects[i].setAttribute('disabled', true);
+			}
+			editButton.textContent = "Редактировать";
+		}
+		else if (editButton.textContent === "Редактировать") {
+			while (numberOfLevel != 1) {
+				let indexToDelete = numberOfLevel;
+				const selectToDelete = document.getElementById(indexToDelete);
+				const labelToDelete = document.getElementById(`label${indexToDelete}`);
+				selectToDelete.remove();
+				labelToDelete.remove();
+				numberOfLevel--;
+			}
+			currentObject = '{"objectId": 1281271, "objectGuid": "889b1f3a-98aa-40fc-9d3d-0f41192758ab", "text": "обл Томская","objectLevel": "Region","objectLevelText": "Субъект РФ"}';
+			currentObjectId = 1281271;
+			editButton.textContent = "Сохранить";
+			buildForm();
+		}
+	})
 }
 
 document.addEventListener('DOMContentLoaded', function () {

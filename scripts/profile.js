@@ -68,7 +68,6 @@ function fillData(user) {
 }
 
 function getAddressChain(userAddressId) {
-	console.log(userAddressId);
 	const apiEndpointAddress = "https://food-delivery.kreosoft.ru/api/address/getaddresschain"
 	fetch(`${apiEndpointAddress}?objectGuid=${userAddressId}`, {
 		method: "GET",
