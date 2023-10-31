@@ -7,6 +7,7 @@ const options = {
 		"Authorization": `Bearer ${authToken}`
 	}
 };
+console.log(authToken)
 
 isProfile = true;
 
@@ -98,6 +99,77 @@ function getAddressChain(userAddressId) {
 		.catch(error => {
 			console.error("Error:", error);
 		});
+}
+
+function submitForm(user) {
+	console.log(user);
+	const options = {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+			"Authorization": `Bearer ${authToken}`
+		},
+		body: JSON.stringify(user)
+	};
+
+	fetch('https://food-delivery.kreosoft.ru/api/account/profile', options)
+}
+
+function validateForm() {
+	const form = document.getElementById('form');
+	const inputs = form.querySelectorAll('input');
+	const address = document.getElementById(`${numberOfLevel}`);
+	const selectedOption = address.options[address.selectedIndex];
+	const addressObject = selectedOption.value;
+	const addressId = JSON.parse(addressObject)['objectGuid'];
+
+	const phoneRegex = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
+	const name = document.getElementById('firstName').value;
+	const surname = document.getElementById('secondName').value;
+	const patronymic = document.getElementById('patronymic').value;
+	const birthday = document.getElementById('birthdayDate').value;
+	let gender = document.getElementById('gender').value;
+	const phone = document.getElementById('phoneNumber').value;
+
+	let isEmpty = false;
+
+	if (gender === "Мужской") {
+		gender = "Male";
+	} else {
+		gender = "Female";
+	}
+
+	inputs.forEach(input => {
+		if (input.value.trim() === '') {
+      isEmpty = true;
+		}
+	});
+
+	if(isEmpty) {
+		alert("Форма заполнена не полностью!")
+		return;
+	}
+
+	console.log(phone)
+
+	if (!phoneRegex.test(phone)) {
+		alert("Номер телефона указан неправильно!");
+		return;
+	}
+
+	console.log({addressId});
+
+	const user = {
+		fullName: `${name} ${surname} ${patronymic}`,
+		birthDate: birthday,
+		gender: gender,
+		addressId: addressId,
+		phoneNumber: phone
+	};
+
+	console.log(user)
+
+	submitForm(user);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
