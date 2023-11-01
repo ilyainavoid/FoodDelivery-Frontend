@@ -64,3 +64,59 @@ h5 {
 .end-align {
 	align-self: flex-end;
 }
+
+.rating {
+	display: flex;
+	align-items: flex-end;
+	font-size: 20px;
+	line-height: 0.75;
+}
+
+.rating-body {
+ position: relative;
+}
+
+.rating-body::before {
+	content: "★★★★★★★★★★";
+	display: block;
+}
+
+.rating-active {
+	position: absolute;
+	width: 75%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+.rating-active::before {
+	content: "★★★★★★★★★★";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	color: #ffd300;
+}
+
+.rating-items {
+	display: flex;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.rating-item {
+	flex: 0 0 20%;
+	height: 100%;
+	opacity: 0;
+}
+
+.rating-value {
+	font-size: 100%;
+	line-height: 1;
+	padding: 0 0 0 10px;
+}
