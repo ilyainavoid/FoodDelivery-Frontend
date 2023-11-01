@@ -83,6 +83,16 @@ function buildMenu(dishList) {
 		};
 		createMenuItem(dish)
 	}
+
+	const cards = document.querySelectorAll('.menu-item');
+	cards.forEach(card => {
+		card.addEventListener('click', (e) => {
+			e.preventDefault();
+			localStorage.setItem('dishId', card.id);
+			window.location.href="position-in-menu.html";
+		})
+	})
+
 	setRatings();
 }
 
@@ -98,7 +108,7 @@ function createMenuItem(dish) {
 	var item =
 	`
 		<div class="col-xl-3 d-flex">
-			<div class="menu-item flex-wrap rounded-2 m-2 p-2">
+			<div class="menu-item flex-wrap rounded-2 m-2 p-2" id=${dish['id']}>
 				
 					<div class="menu-item-image-place">
 						<img src="${dish['image']}" alt="" class="menu-item-image">
