@@ -37,8 +37,16 @@ if (isAuthorized) {
 		},
 	};
 	fetch(apiEndpoint, options)
-		.then(response => response.json())
-		.then(data => {
-			profileLink.textContent = data['email'];
+		.then(response => {
+			if (response.status === 200) {
+				response.json().then((data) => {
+					const link = profileLink.querySelector("a");
+					link.textContent = data['email'];
+				})
+			}
+			else if (response.status === 401) {
+				alert("Время действия токена закончилось!")
+				window.location.href="pages/signin.html";
+			}
 		})
 }
