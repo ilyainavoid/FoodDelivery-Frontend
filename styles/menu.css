@@ -13,12 +13,12 @@
 
 .isVeg {
 	position: absolute;
-	top:0;
-	left:0;
+	top: 0;
+	left: 0;
 	color:#ffffff;
-	font-size: 20px;
+	font-size: 30px;
 	color:#356C52;
-	opacity: 0;
+	opacity: 100;
 }
 
 h3 {

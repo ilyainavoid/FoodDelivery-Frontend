@@ -88,11 +88,16 @@ function buildMenu(dishList) {
 
 function createMenuItem(dish) {
 	let rating;
+	let vegetarianIdicator = `<i class="fa-solid fa-leaf fa isVeg"></i>`;
 	if (dish['rating']) {
 		rating = dish['rating'].toFixed(1);
 	}
 	else {
 		rating = 0;
+	}
+
+	if (!dish['vegetarian']) {
+		vegetarianIdicator = ' ';
 	}
 
 	var item =
@@ -102,7 +107,7 @@ function createMenuItem(dish) {
 				
 					<div class="menu-item-image-place">
 						<img src="${dish['image']}" alt="" class="menu-item-image">
-						<i class="fa-solid fa-leaf fa isVeg"></i>
+						${vegetarianIdicator}
 					</div>
 					<h5 class="menu-item-name">${dish['name']}</h5>
 					<h6 class="menu-item-category">Категория: ${dish['category']}</h6>
