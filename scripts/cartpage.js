@@ -102,23 +102,23 @@ function createItem(item, index) {
 			<div class="outline-container d-flex flex-row justify-content-between align-items-center mb-2">
 				<div class="cart-item row d-flex align-items-center">
 
-					<div class="col-3 d-flex flex-row align-items-center">
+					<div class="col-lg-3 d-flex flex-row align-items-center">
 						<span class="item-index m-3">${index}</span>
 						<div class="item-image rounded-2">
 							<img src="${image}" alt="">
 						</div>
 					</div>
 
-					<div class="col-5">
+					<div class="col-lg-5">
 						<div class="row d-flex flex-row align-items-center">
-							<div class="col-6">
+							<div class="col-xl-6">
 								<div class="item-name-price d-flex flex-column">
 									<h5 class="item-name">${itemName}</h5>
 									<h6 class="price">Цена: ${itemPrice} руб/шт.</h6>
 								</div>
 							</div>
 							
-							<div class="col-6">
+							<div class="col-xl-6">
 								<div class="increment d-flex">
 									<div class="input-group justify-content-start align-items-center" id="${id}">
 										<input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " data-field="quantity">
