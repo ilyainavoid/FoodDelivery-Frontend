@@ -24,14 +24,6 @@ function decrementValue(e) {
 	}
 }
 
-$('.input-group').on('click', '.button-plus', function(e) {
-	incrementValue(e);
-});
-
-$('.input-group').on('click', '.button-minus', function(e) {
-	decrementValue(e);
-});
-
 
 document.addEventListener('DOMContentLoaded', function () {
 	refreshCart();
@@ -50,14 +42,47 @@ function buildCartContent() {
 	.then(response => {
 		if(response.status === 200) {
 			response.json().then(data => {
-				index = 1;
+				let index = 1;
 				data.forEach(item => {
-					createItem(item, index)
+					createItem(item, index);
 					index++;
 				});
+				initButtons();
 			})
 		}
 	})
+}
+
+function initButtons() {
+	const buttons = document.querySelectorAll('.delete-button');
+	buttons.forEach(button => {
+		button.addEventListener("click", () => {
+			deleteDishFromCart(button.parentElement.parentElement.id);
+			const currentItemLayout = document.getElementById(button.parentElement.parentElement.id);
+			currentItemLayout.remove();
+		})
+	})
+
+	const decrements = document.querySelectorAll('.button-minus');
+		const increments = document.querySelectorAll('.button-plus');
+		decrements.forEach(decrement => {
+			decrement.addEventListener('click', (e) => {
+				decrementValue(e);
+				deleteDishUnitFromCart(decrement.parentElement.id)
+				const itemparent = decrement.parentElement;
+				const number = itemparent.querySelector('.quantity-field');
+				if (number.value == 0) {
+					const itemparentglobal = document.getElementById(decrement.parentElement.id);
+					itemparentglobal.remove();
+				}
+			})
+		})
+		increments.forEach(increment => {
+			increment.addEventListener('click', (e) => {
+				incrementValue(e);
+				addItem(increment.parentElement.id);
+			})
+		})
 }
 
 function createItem(item, index) {
@@ -70,8 +95,8 @@ function createItem(item, index) {
 	let id = item['id'];
 	let amount = item['amount']
 
-
 	const itemlayout = `
+	<div class="item-wrap" id="${id}">
 			<div class="outline-container d-flex flex-row justify-content-between align-items-center mb-2">
 				<div class="cart-item row d-flex align-items-center">
 
@@ -82,21 +107,21 @@ function createItem(item, index) {
 						</div>
 					</div>
 
-					<div class="col-4">
+					<div class="col-5">
 						<div class="row d-flex flex-row align-items-center">
-							<div class="col-7">
+							<div class="col-6">
 								<div class="item-name-price d-flex flex-column">
 									<h5 class="item-name">${itemName}</h5>
 									<h6 class="price">Цена: ${itemPrice} руб/шт.</h6>
 								</div>
 							</div>
 							
-							<div class="col-5">
+							<div class="col-6">
 								<div class="increment d-flex">
-									<div class="input-group justify-content-start align-items-center" id="">
-										<input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " data-field="quantity" onclick="deleteDishUnitFromCart()">
+									<div class="input-group justify-content-start align-items-center" id="${id}">
+										<input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " data-field="quantity">
 										<input type="number" step="1" max="10" value="${amount}" name="quantity" class="quantity-field border-0 text-center w-25">
-										<input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-field="quantity" onclick="addItem()">
+										<input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-field="quantity">
 									</div>
 								</div>
 							</div>
@@ -104,11 +129,11 @@ function createItem(item, index) {
 					</div>
 
 				</div>
-				<div class="delete-button p-3">
-					<button class="btn btn-danger" onclick="deleteDishFromCart()">Удалить</button>
+				<div class="delete-button p-3" id="deleteFromCart${index}">
+					<button class="btn btn-danger" id="deleteFromCart${index}">Удалить</button>
 				</div>
 			</div>
+	</div>
 	`
-
 	parent.innerHTML += itemlayout;
 }
