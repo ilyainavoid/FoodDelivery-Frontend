@@ -48,15 +48,38 @@ h5 {
 }
 
 .menu-item:hover {
-	cursor: pointer;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
+
+.menu-item-image-place:hover {
+	cursor: pointer;
+}
+
+.menu-item-name:hover {
+	cursor: pointer;
+}
+
+.menu-item-category:hover {
+	cursor: pointer;
+}
+
+.menu-item-desc:hover {
+	cursor: pointer;
+}
+
 
 .menu-item-image-place {
 	position: relative;
 	width: auto;
 	height: auto;
 	overflow: hidden;
+}
+
+.indicator {
+	color:white;
+	background-color: #356C52;
+	padding: 5px;
+	border-radius: 10px;
 }
 
 .menu-item-image-place img {

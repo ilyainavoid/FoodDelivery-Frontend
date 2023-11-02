@@ -1,8 +1,11 @@
 const dishListEndpoint = "https://food-delivery.kreosoft.ru/api/dish"
+const authToken = getToken("userToken");
+console.log(authToken)
 
 const controls = document.querySelector(".menu-control");
 const applyButton = document.getElementById("apply-button");
 const navigation = document.getElementById("pagination");
+const indicator = document.querySelector('.indicator')
 
 let lastQuery = dishListEndpoint;
 let pagesCount = 4;
@@ -63,6 +66,24 @@ function preparePagination(pagination) {
 	});
 }
 
+function refreshCart() {
+	fetch (`https://food-delivery.kreosoft.ru/api/basket`,
+	 {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${authToken}`
+			}
+	})
+	.then(response => {
+		if(response.status === 200) {
+			response.json().then(data => {
+				indicator.textContent = data.length;
+			})
+		}
+	})
+}
+
 function buildMenu(dishList) {
 	const currentPageDishesList = dishList['dishes']
 	const pagination = dishList['pagination']
@@ -86,14 +107,45 @@ function buildMenu(dishList) {
 
 	const cards = document.querySelectorAll('.menu-item');
 	cards.forEach(card => {
-		card.addEventListener('click', (e) => {
-			e.preventDefault();
-			localStorage.setItem('dishId', card.id);
-			window.location.href="position-in-menu.html";
+		cardName = card.querySelector('.menu-item-name');
+		cardCategory = card.querySelector('.menu-item-category');
+		cardImage = card.querySelector('.menu-item-image-place');
+		cardDescription = card.querySelector('.menu-item-desc');
+		orderButton = card.querySelector('.price-and-order');
+		const dishId = card.id;
+
+		orderButton.addEventListener('click', () => {
+			console.log(1232)
+			fetch (`https://food-delivery.kreosoft.ru/api/basket/dish/${dishId}`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": `Bearer ${authToken}`
+					}
+				}).then(refreshCart());
 		})
+		
+		cardName.addEventListener('click', () => {
+			goToDish(dishId)
+		})
+		cardCategory.addEventListener('click', () => {
+			goToDish(dishId)
+		})
+		cardImage.addEventListener('click', () => {
+			goToDish(dishId)
+		})
+		cardDescription.addEventListener('click', () => {
+			goToDish(dishId)
+		})
+
 	})
 
 	setRatings();
+}
+
+function goToDish(dishId) {
+	localStorage.setItem('dishId', dishId)
+	window.location.href = 'position-in-menu.html'
 }
 
 function createMenuItem(dish) {
@@ -143,7 +195,7 @@ function createMenuItem(dish) {
 						</div>
 					</div>
 					<p class="menu-item-desc">${dish['description']}</p>
-					<div class="price-and-order rounded p-2 d-flex align-items-center flex-lg-row justify-content-between">
+					<div class="price-and-order rounded p-2 d-flex align-items-center flex-lg-row justify-content-between" id="pao">
 						<div class="pricetag d-flex align-items-center flex-lg-row">
 							<i class="fa-solid fa-coins fa me-1"></i>
 							<h6 class="price">Цена: ${dish['price']} руб.</h6>
@@ -253,4 +305,5 @@ document.addEventListener('DOMContentLoaded', function () {
 		lastQuery = 'https://food-delivery.kreosoft.ru/api/dish?vegetarian=false&';
 		buildMenu(data);
 	})
+	refreshCart();
 });
