@@ -74,6 +74,8 @@ function initButtons() {
 				if (number.value == 0) {
 					const itemparentglobal = document.getElementById(decrement.parentElement.id);
 					itemparentglobal.remove();
+					const currentLevel = indicator.textContent - 1;
+					indicator.textContent = currentLevel;
 				}
 			})
 		})
