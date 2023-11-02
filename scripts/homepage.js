@@ -3,8 +3,6 @@ const authorizedElements = document.querySelectorAll(".authorized");
 const unauthorizedElements = document.querySelectorAll(".unauthorized");
 let isAuthorized = false;
 
-console.log(authToken);
-
 if (authToken) {
 	isAuthorized = true;
 	authorizedElements.forEach(function(element) {
@@ -36,6 +34,7 @@ if (isAuthorized) {
 			"Authorization": `Bearer ${authToken}`
 		},
 	};
+	console.log(authToken);
 	fetch(apiEndpoint, options)
 		.then(response => {
 			if (response.status === 200) {
