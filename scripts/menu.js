@@ -5,7 +5,6 @@ console.log(authToken)
 const controls = document.querySelector(".menu-control");
 const applyButton = document.getElementById("apply-button");
 const navigation = document.getElementById("pagination");
-const indicator = document.querySelector('.indicator')
 
 let lastQuery = dishListEndpoint;
 let pagesCount = 4;
@@ -64,24 +63,6 @@ function preparePagination(pagination) {
 			changePage(aimPage);
 		})
 	});
-}
-
-function refreshCart() {
-	fetch (`https://food-delivery.kreosoft.ru/api/basket`,
-	 {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-				"Authorization": `Bearer ${authToken}`
-			}
-	})
-	.then(response => {
-		if(response.status === 200) {
-			response.json().then(data => {
-				indicator.textContent = data.length;
-			})
-		}
-	})
 }
 
 function buildMenu(dishList) {
