@@ -41,6 +41,7 @@ if (isAuthorized) {
 				response.json().then((data) => {
 					const link = profileLink.querySelector("a");
 					link.textContent = data['email'];
+					refreshCart();
 				})
 			}
 			else if (response.status === 401) {

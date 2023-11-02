@@ -72,6 +72,7 @@ function editCard(dish) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+	refreshCart();
 	fetch(`https://food-delivery.kreosoft.ru/api/dish/${dishId}`, {
 		method: "GET",
 		headers: {

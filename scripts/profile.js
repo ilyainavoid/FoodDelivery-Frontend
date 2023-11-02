@@ -173,5 +173,6 @@ function validateForm() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+	refreshCart();
 	checkIfAuthorized();
 });
