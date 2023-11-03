@@ -18,6 +18,10 @@ function setRatings() {
 	function initRating(rating) {
 		initRatingVars(rating);
 		setRatingActiveWidth();
+
+		if (rating.classList.contains('rating-set')) {
+			setRating(rating);
+		}
 	}
 
 	function initRatingVars(rating) {
@@ -29,6 +33,55 @@ function setRatings() {
 		const ratingActiveWidth = index / 0.1;
 		ratingActive.style.width = `${ratingActiveWidth}%`;
 	}
+
+	function setRating(rating) {
+		const ratingItems = rating.querySelectorAll('.rating-item');
+		for (let i = 0; i < ratingItems.length; i++) {
+			const ratingItem = ratingItems[i];
+			ratingItem.addEventListener('mouseenter', function (e) {
+				initRatingVars(rating);
+				setRatingActiveWidth(ratingItem.value);
+			});
+			ratingItem.addEventListener('mouseleave', function (e) {
+				setRatingActiveWidth();
+			});
+			ratingItem.addEventListener('click', function (e) {
+				initRatingVars(rating);
+				ratingValue.innerHTML = i + 1;
+				setRatingActiveWidth();
+				ratingCheck(ratingValue.innerHTML)
+			});
+		}
+	}
+}
+
+async function ratingCheck(value) {
+	const token = getToken("userToken")
+	console.log(token)
+	await fetch(`https://food-delivery.kreosoft.ru/api/dish/${dishId}/rating/check`, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+			"Authorization": `Bearer ${token}`
+		}
+	}).then((response) => {
+		if(response['ok']) {
+			setRating(value);
+		}
+	});
+}
+
+async function setRating(value) {
+	await fetch(`https://food-delivery.kreosoft.ru/api/dish/${dishId}/rating?ratingScore=${value}`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			"Authorization": `Bearer ${token}`
+		}
+	})
+	.then((response) => {
+		console.log(response);
+	})
 }
 
 function editCard(dish) {
@@ -77,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			document.querySelector('.header-top-authorized').classList.remove("d-none");
 		} else {
 			document.querySelector('.header-top-unauthorized').classList.remove("d-none");
+			document.querySelector('.rating').classList.remove("rating-set")
 		}
 	})
 	refreshCart();
