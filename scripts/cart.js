@@ -1,8 +1,8 @@
 const indicator = document.querySelector('.indicator');
 const token = getToken("userToken");
 
-function refreshCart() {
-	fetch (`https://food-delivery.kreosoft.ru/api/basket`,
+async function refreshCart() {
+	await fetch (`https://food-delivery.kreosoft.ru/api/basket`,
 	 {
 			method: "GET",
 			headers: {
