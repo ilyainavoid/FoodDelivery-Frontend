@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Оформление заказа</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../styles/style.css">
+	<link rel="stylesheet" href="../styles/checkout.css">
+</head>
+<body>
+	<div class="wrapper">
+		<header class="header">
+
+			<div class="header-top">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<div class="container w-75">
+						<a class="navbar-brand" href="../index.html">Good<span class='special-word-header-logo'>Food</span></a>
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+							aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarText">
+							<ul class="shown-in-header navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="menu.html">Меню</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link active" href="order-history.html">Заказы</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link active" href="cart.html">Корзина <span class="indicator">0</span> </a>
+								</li>
+							</ul>
+							<span class="shown-in-header navbar-text">
+								<button class="button-header" onclick="logout()">Выйти</button>
+							</span>
+						</div>
+					</div>
+				</nav>
+			</div>
+
+
+			<main class="main">
+				<div class="container w-75">
+					<div class="content p-3">
+						<h2 class="checkout-label">Оформление заказа</h2>
+						<div class="customer-data mb-3">
+							<h5 class="customer-data-label">Данные покупателя</h5>
+							<div class="row customer-data-content">
+								<div class="col-xl-6 forNumber">
+									<label for="phoneInput" class="input-placeholder">Телефон</label>
+									<input class="form-control form-control-lg" type="tel" id="phoneInput" value="+7 (902) 999-72-72" disabled>
+								</div>
+								<div class="col-xl-6 forEmail">
+									<label for="emailInput" class="input-placeholder">Эл. почта</label>
+									<input class="form-control form-control-lg" type="email" id="emailInput" value="example@mail.com" disabled>
+								</div>
+							</div>
+						</div>
+						<div class="delivery-data mb-3">
+							<h5 class="delivery-data-label">Данные доставки</h5>
+							<div class="delivery-datetime d-flex flex-column">
+								<p class="delivery-datetime-label text-start">Время доставки</p>
+								<input type="datetime-local" class="form-control form-control-lg" id="forTime">
+							</div>
+							<div class="delivery-address p-3 rounded outline-container" id="address-section-main">
+								<p class="address-label text-start">Адрес доставки</p>
+								<div class="row">
+									<div class="col">
+										<div class="form-outline" id="address-section">
+											<label for="region" class="form-label">Субъект РФ:</label>
+											<select name="region" id="region" class="form-select form-select-lg mb-3" autocomplete="on" disabled>
+												<option value="">Томская область</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cart-data">
+							<p class="cart-data-label text-start">Список блюд</p>
+							
+							<div class="dish-list">
+								<div class="item-wrap" id="${id}">
+									<div class="outline-container d-flex flex-row justify-content-between align-items-center p-2 mb-2">
+										<div class="cart-item row d-flex align-items-center">
+						
+											<div class="col-lg-3 d-flex flex-row align-items-center">
+												<span class="item-index m-3">1</span>
+												<div class="item-image rounded-2">
+													<img src="https://mistertako.ru/uploads/products/77888c7e-8327-11ec-8575-0050569dbef0." alt="">
+												</div>
+											</div>
+						
+											<div class="col-lg-9">
+												<div class="row d-flex flex-row align-items-center">
+													<div class="col-12 d-flex flex-row align-items-center justify-content-between">
+														<div class="item-name-price d-flex flex-column">
+															<h5 class="item-name">Четыре сыра</h5>
+															<h6 class="price">Цена: 300 руб/шт.</h6>
+															<p class="amount text-start">Количество: 2 шт.</p>
+														</div>
+														<div class="full-price d-flex flex-column m-2">
+															<p class="full-price-text text-end"><strong>Стоимость:</strong> 360  руб.</p>
+														</div>
+													</div>
+												</div>
+											</div>
+						
+										</div>
+									</div>
+								</div>
+								<div class="item-wrap" id="${id}">
+									<div class="outline-container d-flex flex-row justify-content-between align-items-center p-2 mb-2">
+										<div class="cart-item row d-flex align-items-center">
+						
+											<div class="col-lg-3 d-flex flex-row align-items-center">
+												<span class="item-index m-3">2</span>
+												<div class="item-image rounded-2">
+													<img src="https://mistertako.ru/uploads/products/77888c7e-8327-11ec-8575-0050569dbef0." alt="">
+												</div>
+											</div>
+						
+											<div class="col-lg-9">
+												<div class="row d-flex flex-row align-items-center">
+													<div class="col-12 d-flex flex-row align-items-center justify-content-between">
+														<div class="item-name-price d-flex flex-column">
+															<h5 class="item-name">Четыре сыра</h5>
+															<h6 class="price">Цена: 300 руб/шт.</h6>
+															<p class="amount text-start">Количество: 2 шт.</p>
+														</div>
+														<div class="full-price d-flex flex-column m-2">
+															<p class="full-price-text text-end"><strong>Стоимость:</strong> 360  руб.</p>
+														</div>
+													</div>
+												</div>
+											</div>
+						
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="fullprice-and-button d-flex flex-column">
+								<p class="full-order-price-text text-start"><strong>Стоимость заказа: </strong> 360  руб.</p>
+								<button class="btn btn-success submitbutton">Подтвердить заказ</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</main>
+
+			<footer class="footer d-flex justify-content-around align-items-center">
+				<div class="conteiner w-75">
+					<div class="row">
+						<div class="col d-flex justify-content-around align-items-center">
+							<p class="footer-text">Developed by Ilya</p>
+						</div>
+					</div>
+				</div>
+			</footer>
+
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="../scripts/token-handling.js"></script>
+	<script src="../scripts/address-section.js"></script>
+	<script src="../scripts/cart.js"></script>
+	<script src="../scripts/checkout.js"></script>
+
+</body>
+</html>
