@@ -96,6 +96,7 @@ function submitRegistration(user) {
 		setCookie("userToken", token, 7);
 		localStorage.setItem('authorizedStatus', 1);
 		alert("Регистрация прошла успешно!");
+		window.location.href = "../index.html";
   })
   .catch(error => {
     console.error("Error:", error);
