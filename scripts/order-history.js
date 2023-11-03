@@ -7,27 +7,120 @@ async function initPage() {
 	const suggest = document.querySelector('.suggest-order');
 	await refreshCart();
 
-
-	refreshCart().then(data=> {
+	refreshCart().then(()=> {
 		if (indicator.textContent != 0) {
-			console.log("here");
 			suggest.classList.remove("d-none");
 		}
 	});
+
+	await buildOrdersList();
+}
+
+function initElements() {
+	const orderHeads = document.querySelectorAll('.order-heading');
+	const submitDeliveryButtons = document.querySelectorAll('.submitDelivery');
+	
+	orderHeads.forEach(head => {
+		head.addEventListener('click', () => {
+			//Logic for single order
+		})
+	})
+
+	submitDeliveryButtons.forEach(button => {
+		button.addEventListener('click', () => {
+			submitOrderDelivery(button.id).then(()=> {
+				window.location.reload();
+			})
+		})
+	})
+}
+
+async function submitOrderDelivery(id) {
+	await fetch (`https://food-delivery.kreosoft.ru/api/order/${id}/status`,
+	 {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${token}`
+			}
+	})
+}
+
+async function buildOrdersList() {
+	await fetch ('https://food-delivery.kreosoft.ru/api/order',
+	 {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${token}`
+			}
+	})
+	.then(response => {
+		if(response.status === 200) {
+			response.json().then(data => {
+				data.forEach(order => {
+					createElement(order)
+				});
+				initElements();
+			})
+		}
+	})
+
+}
+
+function createElement(order) {
+	const container = document.querySelector('.last-orders');
+
+	const checkoutDate = formatDate(order['orderTime']);
+	const deliveryTime = formatTime(order['deliveryTime']);
+	const price = order['price'];
+	const id = order['id'];
+	
+	let displayButton = "d-inline";
+	let deliveryStatus = "Доставка ожидается: "
+	let status = "В обработке";
+	if (order['status'] === "Delivered") {
+		status = "Доставлен";
+		displayButton = "d-none"
+		deliveryStatus = "Доставлено: "
+	}
 
 	const orderItemLayout = `
 		<div class="outline-container p-3">
 			<div class="row item">
 				<div class="col-md-6 order-info d-flex flex-column justify-content-start">
-					<h6 class="order-heading">Заказ от 20.04.2022</h6>
-					<p class="status">Статус заказа - в обработке</p>
-					<p class="delivery-time">Доставка ожидается в 15:30</p>
+					<h6 class="order-heading">Заказ от ${checkoutDate}</h6>
+					<p class="status">Статус заказа: ${status}</p>
+					<p class="delivery-time">${deliveryStatus} ${deliveryTime}</p>
 				</div>
 				<div class="col-md-6 order-button-price d-flex flex-column justify-content-end">
-					<button class="btn btn-outline-success submitDelivery align-self-md-end mt-2 mt-md-0">Подтвердить доставку</button>
-					<div class="order-price-label align-self-md-end text-start text-md-end"><strong>Стоимость заказа:</strong> <span class="order-price">785 руб.</span> </div>
+					<button id="${id}" class="btn btn-outline-success ${displayButton} submitDelivery align-self-md-end mt-2 mt-md-0">Подтвердить доставку</button>
+					<div class="order-price-label align-self-md-end text-start text-md-end"><strong>Стоимость заказа:</strong> <span class="order-price">${price} руб.</span> </div>
 				</div>
 			</div>
 		</div>
-	`;
+`;
+
+	container.innerHTML += orderItemLayout;
+}
+
+function formatDate(datetime) {
+	const inputDate = new Date(datetime);
+
+	const day = inputDate.getDate().toString().padStart(2, '0');
+	const month = (inputDate.getMonth() + 1).toString().padStart(2, '0');
+	const year = inputDate.getFullYear();
+
+	const formattedDate = `${day}.${month}.${year}`;
+	return formattedDate;
+}
+
+function formatTime(datetime) {
+	let date = datetime.split("T")[0].substring(0, 10);
+
+	const dateUnits = date.split("-");
+	date = `${dateUnits[2]}.${dateUnits[1]}.${dateUnits[0]}`;
+
+	const time = datetime.split("T")[1].substring(0, 5);
+	return `${time} ${date}`;
 }
