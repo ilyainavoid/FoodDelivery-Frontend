@@ -6,6 +6,37 @@ async function initPage() {
 	await refreshCart();
 	await fillUserData();
 	await buildCartContent();
+
+	const submitButton = document.querySelector('.submitbutton');
+	const deliveryDateTimeInput = document.querySelector('#forTime');
+	submitButton.addEventListener('click', (e) => {
+		e.preventDefault();
+		const checkoutTime = new Date();
+		const deliveryTime = new Date(deliveryDateTimeInput.value);
+
+		if (deliveryTime > (checkoutTime.setHours(checkoutTime.getHours() + 1))) {
+			const addressSection = document.getElementById('address-section-main');
+			const addressUnits = addressSection.querySelectorAll('select');
+			const lastAddressUnit = document.getElementById(addressUnits.length);
+			const lastAddressUnitGuid = JSON.parse(lastAddressUnit.value)['objectGuid'];
+
+			const orderInfo = {
+				"deliveryTime": `${deliveryDateTimeInput.value}`,
+  			"addressId": lastAddressUnitGuid
+			};
+
+			fetch ('https://food-delivery.kreosoft.ru/api/order', {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					"Authorization": `Bearer ${token}`
+				},
+				body: JSON.stringify(orderInfo)
+			})
+		} else {
+			alert("Время доставки должно быть на час больше времени оформления заказа!")
+		}
+	})
 }
 
 async function buildCartContent() {
@@ -31,7 +62,8 @@ async function buildCartContent() {
 }
 
 function createItem(item, index) {
-	const parent = document.querySelector('.dish-list')
+	const parent = document.querySelector('.dish-list');
+	const fullOrderPrice = document.querySelector('.fop');
 
 	let itemName = item['name'];
 	let itemPrice = item['price'];
@@ -71,6 +103,8 @@ function createItem(item, index) {
 		</div>
 	`
 	parent.innerHTML += itemlayout;
+	let currentPrice = fullOrderPrice.textContent;
+	fullOrderPrice.textContent = currentPrice + totalPrice;
 }
 
 async function fillUserData() {
