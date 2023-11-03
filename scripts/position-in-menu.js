@@ -72,6 +72,13 @@ function editCard(dish) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+	checkAuth().then(() => {
+		if(localStorage.getItem('authorizedStatus') != 0) {
+			document.querySelector('.header-top-authorized').classList.remove("d-none");
+		} else {
+			document.querySelector('.header-top-unauthorized').classList.remove("d-none");
+		}
+	})
 	refreshCart();
 	fetch(`https://food-delivery.kreosoft.ru/api/dish/${dishId}`, {
 		method: "GET",
