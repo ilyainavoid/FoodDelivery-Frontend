@@ -35,6 +35,10 @@ p {
 	font-weight: 700;
 }
 
+.order-heading {
+	cursor: pointer;
+}
+
 .order-price {
 	text-decoration: bold;
 }

@@ -19,10 +19,14 @@ async function initPage() {
 function initElements() {
 	const orderHeads = document.querySelectorAll('.order-heading');
 	const submitDeliveryButtons = document.querySelectorAll('.submitDelivery');
+	let index = 0;
 	
 	orderHeads.forEach(head => {
+		index++;
 		head.addEventListener('click', () => {
-			//Logic for single order
+			localStorage.setItem('orderId', head.parentElement.parentElement.parentElement.id);
+			localStorage.setItem('index', index)
+			window.location.href='../pages/order-details.html'
 		})
 	})
 
@@ -86,7 +90,7 @@ function createElement(order) {
 	}
 
 	const orderItemLayout = `
-		<div class="outline-container p-3">
+		<div class="outline-container p-3" id="${id}">
 			<div class="row item">
 				<div class="col-md-6 order-info d-flex flex-column justify-content-start">
 					<h6 class="order-heading">Заказ от ${checkoutDate}</h6>
