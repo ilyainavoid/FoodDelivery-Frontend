@@ -80,6 +80,7 @@ function submitRegistration(user) {
     console.log("API Response:", data);
 		const token = data['token'];
 		setCookie("userToken", token, 7);
+		localStorage.setItem('authorizedStatus', 1);
 		alert("Регистрация прошла успешно!");
   })
   .catch(error => {

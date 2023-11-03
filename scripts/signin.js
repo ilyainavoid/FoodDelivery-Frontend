@@ -39,6 +39,7 @@ function submitForm() {
 			alert("Авторизация прошла успешно!")
 			const token = data['token'];
 			setCookie("userToken", token, 7);
+			localStorage.setItem('authorizedStatus', 1);
 			const previous = localStorage.getItem('previousUrl')
 			window.location.href = previous;
 		}

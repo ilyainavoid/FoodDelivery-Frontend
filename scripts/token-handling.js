@@ -1,8 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
+	checkAuth();
+});
+
+async function checkAuth() {
 	if((window.location['href'] != "http://localhost:5500/pages/signin.html") &&
 	 (window.location['href'] != "http://localhost:5500/pages/signup.html")) {
 		const token = getToken("userToken");
-		fetch('https://food-delivery.kreosoft.ru/api/account/profile', {
+		await fetch('https://food-delivery.kreosoft.ru/api/account/profile', {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -16,17 +20,17 @@ document.addEventListener('DOMContentLoaded', function () {
 					 (window.location['href'] != "http://localhost:5500/index.html")) {
 						alert("Для доступа на эту страницу нужно быть авторизованым!");
 						localStorage.setItem('previousUrl', window.location['href']);
-						localStorage.setItem('authorized', false)
+						localStorage.setItem('authorizedStatus', 0)
 						window.location.href = '../pages/signin.html'
 					} else if ((window.location['href'] === "http://localhost:5500/") &&
 					 (window.location['href'] === "http://localhost:5500/index.html")) {
-						localStorage.setItem('authorized', false)
+						localStorage.setItem('authorizedStatus', 0)
 					}
 				}
 				throw new Error('Ошибка HTTP: ' + response.status);
 			}
 			else {
-				localStorage.setItem('authorized', true);
+				localStorage.setItem('authorizedStatus', 1);
 			}
 			return response.json();
 		})
@@ -37,9 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			console.error('Произошла ошибка:', error);
 		});
 	}
-});
-
-
+}
 
 function setCookie(name, token, daysToExpire) {
   const date = new Date();
@@ -67,5 +69,6 @@ function getToken(name) {
 
 function logout() {
 	document.cookie = "userToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+	localStorage.setItem('authorizedStatus', 0)
 	window.location.reload();
 }
