@@ -67,6 +67,7 @@ function getToken(name) {
 }
 
 function logout() {
+	localStorage.setItem('previousUrl', window.location['href']);
 	document.cookie = "userToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 	localStorage.setItem('authorizedStatus', 0)
 	window.location.reload();

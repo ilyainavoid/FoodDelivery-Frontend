@@ -17,6 +17,20 @@ async function initPage() {
 }
 
 function initElements() {
+	fetch('https://food-delivery.kreosoft.ru/api/account/profile', {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+			"Authorization": `Bearer ${token}`
+		}
+	}).then((response) => {
+		return response.json();
+	}).then((data) => {
+		if(localStorage.getItem('authorizedStatus') != 0) {
+			document.querySelector('.profile-link').text = data['email'];
+		}
+	})
+
 	const orderHeads = document.querySelectorAll('.order-heading');
 	const submitDeliveryButtons = document.querySelectorAll('.submitDelivery');
 	let index = 0;

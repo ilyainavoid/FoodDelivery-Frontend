@@ -3,6 +3,20 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 async function initPage() {
+	fetch('https://food-delivery.kreosoft.ru/api/account/profile', {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${token}`
+			}
+		}).then((response) => {
+			return response.json();
+		}).then((data) => {
+			if(localStorage.getItem('authorizedStatus') != 0) {
+				document.querySelector('.profile-link').text = data['email'];
+			}
+		})
+
 	const indicator = document.querySelector('.indicator');
 	const orderId = localStorage.getItem('orderId');
 	const index = localStorage.getItem('index');

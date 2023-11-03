@@ -155,6 +155,12 @@ footer {
 	padding: 3vh;
 }
 
+.profile-link {
+	color: black;
+	margin-bottom: -1px;
+	cursor: pointer;
+}
+
 .footer-text {
 	font-weight: 200;
 	font-size: 15px;

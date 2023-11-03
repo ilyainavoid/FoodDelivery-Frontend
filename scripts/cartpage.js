@@ -26,6 +26,20 @@ function decrementValue(e) {
 
 
 document.addEventListener('DOMContentLoaded', function () {
+	fetch('https://food-delivery.kreosoft.ru/api/account/profile', {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${token}`
+			}
+		}).then((response) => {
+			return response.json();
+		}).then((data) => {
+			if(localStorage.getItem('authorizedStatus') != 0) {
+				document.querySelector('.profile-link').text = data['email'];
+			}
+		})
+
 	refreshCart();
 	buildCartContent();
 });
