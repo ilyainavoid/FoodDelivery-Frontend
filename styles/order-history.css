@@ -1,0 +1,50 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.outline-container {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+	margin-top: -1px;
+}
+
+p {
+	line-height: normal;
+	box-sizing: content-box;
+	line-height: 1;
+	margin-bottom: -2px;
+}
+
+.order-heading {
+	margin-bottom: 0px;
+	text-decoration: underline;
+	margin-bottom: 1vh;
+}
+
+.status, .delivery-time {
+	text-align: start;
+	margin-bottom: 3px;
+}
+
+.content {
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.label-last-orders {
+	font-weight: 700;
+}
+
+.order-heading {
+	cursor: pointer;
+}
+
+.order-price {
+	text-decoration: bold;
+}
+
+.submitDelivery {
+	max-width: 50%;
+	margin-bottom: 1vh;
+}
+
