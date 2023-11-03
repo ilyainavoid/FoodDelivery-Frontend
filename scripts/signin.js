@@ -39,7 +39,8 @@ function submitForm() {
 			alert("Авторизация прошла успешно!")
 			const token = data['token'];
 			setCookie("userToken", token, 7);
-			window.location.href = "../index.html"
+			const previous = localStorage.getItem('previousUrl')
+			window.location.href = previous;
 		}
   })
 }

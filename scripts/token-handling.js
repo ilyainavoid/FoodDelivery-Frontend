@@ -1,3 +1,39 @@
+document.addEventListener('DOMContentLoaded', function () {
+	if(window.location['href'] != "http://localhost:5500/pages/signin.html" ||
+	window.location['href'] != "http://localhost:5500/pages/signup.html") {
+		const token = getToken("userToken");
+		fetch('https://food-delivery.kreosoft.ru/api/account/profile', {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${token}`
+			}
+		})
+		.then((response) => {
+			if (!response.ok) {
+				if (response.status === 401) {
+					alert("Действие токена истекло!");
+					localStorage.setItem('previousUrl', window.location['href']);
+					localStorage.setItem('authorized', false)
+					window.location.href = '../pages/signin.html'
+				}
+				throw new Error('Ошибка HTTP: ' + response.status);
+			}
+			else {
+				localStorage.setItem('authorized', true);
+			}
+			return response.json();
+		})
+		.then((data) => {
+			console.log(data);
+		})
+		.catch((error) => {
+			console.error('Произошла ошибка:', error);
+		});
+	}
+});
+
+
 function setCookie(name, token, daysToExpire) {
   const date = new Date();
   date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
