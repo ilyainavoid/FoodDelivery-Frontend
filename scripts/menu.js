@@ -1,6 +1,6 @@
 const dishListEndpoint = "https://food-delivery.kreosoft.ru/api/dish"
 const authToken = getToken("userToken");
-console.log(authToken)
+
 
 const controls = document.querySelector(".menu-control");
 const applyButton = document.getElementById("apply-button");
@@ -72,7 +72,7 @@ function buildMenu(dishList) {
 	preparePagination(pagination);
 
 	for (let i = 0; i < currentPageDishesList.length; i++) {
-		console.log(currentPageDishesList[i])
+		(currentPageDishesList[i])
 		const dish = {
 			name: currentPageDishesList[i]['name'],
 			category: currentPageDishesList[i]['category'],
@@ -96,7 +96,7 @@ function buildMenu(dishList) {
 		const dishId = card.id;
 
 		orderButton.addEventListener('click', () => {
-			console.log(1232)
+			(1232)
 			fetch (`https://food-delivery.kreosoft.ru/api/basket/dish/${dishId}`, {
 					method: "POST",
 					headers: {
@@ -193,19 +193,19 @@ function createMenuItem(dish) {
 
 function createQuery(selectedCategories, selectedSort, isVegetarian) {
 	let query = "https://food-delivery.kreosoft.ru/api/dish?"
-	console.log(selectedCategories);
+	(selectedCategories);
 	if(selectedCategories.length != 0) {
 		selectedCategories.forEach(category => {
 			query += `${category}&`;
 		});
 	}
-	console.log(isVegetarian);
+	(isVegetarian);
 	if (isVegetarian) {
 		query += "vegetarian=true&"
 	} else {
 		query += "vegetarian=false&"
 	}
-	console.log(selectedSort);
+	(selectedSort);
 	if(selectedSort) {
 		query += `${selectedSort}&`
 	}
@@ -267,9 +267,9 @@ applyButton.addEventListener('click', () => {
 		isVegetarian=false;
 	}
 
-	console.log(selectedCategories);
-	console.log(selectedSort);
-	console.log(isVegetarian);
+	(selectedCategories);
+	(selectedSort);
+	(isVegetarian);
 
 	recreateMenu(selectedCategories, selectedSort, isVegetarian);
 })
