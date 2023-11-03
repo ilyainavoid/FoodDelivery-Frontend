@@ -17,13 +17,15 @@ async function checkAuth() {
 			if (!response.ok) {
 				if (response.status === 401) {
 					if ((window.location['href'] != "http://localhost:5500/") &&
-					 (window.location['href'] != "http://localhost:5500/index.html")) {
+					 (window.location['href'] != "http://localhost:5500/index.html")
+					  && (window.location['href'] != "http://localhost:5500/pages/position-in-menu.html")) {
 						alert("Для доступа на эту страницу нужно быть авторизованым!");
 						localStorage.setItem('previousUrl', window.location['href']);
 						localStorage.setItem('authorizedStatus', 0)
 						window.location.href = '../pages/signin.html'
 					} else if ((window.location['href'] === "http://localhost:5500/") &&
-					 (window.location['href'] === "http://localhost:5500/index.html")) {
+					 (window.location['href'] === "http://localhost:5500/index.html") 
+					 && (window.location['href'] === "http://localhost:5500/position-in-menu.html")) {
 						localStorage.setItem('authorizedStatus', 0)
 					}
 				}
@@ -33,9 +35,6 @@ async function checkAuth() {
 				localStorage.setItem('authorizedStatus', 1);
 			}
 			return response.json();
-		})
-		.then((data) => {
-			console.log(data);
 		})
 		.catch((error) => {
 			console.error('Произошла ошибка:', error);
