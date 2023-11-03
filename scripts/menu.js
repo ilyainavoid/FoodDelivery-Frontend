@@ -200,7 +200,6 @@ function createMenuItem(dish) {
 
 function createQuery(selectedCategories, selectedSort, isVegetarian) {
 	let query = "https://food-delivery.kreosoft.ru/api/dish?"
-	(selectedCategories);
 	if(selectedCategories.length != 0) {
 		selectedCategories.forEach(category => {
 			query += `${category}&`;
