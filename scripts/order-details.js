@@ -6,9 +6,28 @@ async function initPage() {
 	const indicator = document.querySelector('.indicator');
 	const orderId = localStorage.getItem('orderId');
 	const index = localStorage.getItem('index');
+	const confirmDeliveryButton = document.querySelector('.confirmDelivery');
+
 	document.querySelector('.index').textContent = index;
+	confirmDeliveryButton.addEventListener('click', () => {
+		submitOrderDelivery(orderId).then(() => {
+			window.location.reload();
+		})
+	})
+	
 	await refreshCart();
 	await getContentData(orderId);
+}
+
+async function submitOrderDelivery(id) {
+	await fetch (`https://food-delivery.kreosoft.ru/api/order/${id}/status`,
+	 {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${token}`
+			}
+	})
 }
 
 async function getContentData(id) {
@@ -30,7 +49,8 @@ async function useData(data) {
 	const dateDeliveryField = document.querySelector('.datetime-delivery');
 	const addressDeliveryField = document.querySelector('.address');
 	const orderStatusField = document.querySelector('.status');
-	const fullPriceField = document.querySelector('.fullPriceField')
+	const fullPriceField = document.querySelector('.fullPriceField');
+	const confirmDeliveryButton = document.querySelector('.confirmDelivery');
 
 	const dateCheckout = formatTime(data['orderTime']);
 	const dateDelivery = formatTime(data['deliveryTime']);
@@ -44,6 +64,7 @@ async function useData(data) {
 	let statusToWrite = "В обработке"
 	if (orderStatus === "Delivered") {
 		statusToWrite = "Доставлен";
+		confirmDeliveryButton.classList.add('d-none')
 	}
 
 	dateCheckoutField.textContent = dateCheckout;
