@@ -33,6 +33,14 @@ body {
 	flex-direction: column;
 }
 
+.content-wrap {
+	min-height: 100%;
+}
+
+#for-items {
+  flex: 1;
+}
+
 main.main {
 	flex: 1 1 auto;
 }
@@ -152,6 +160,10 @@ footer {
 	font-size: 15px;
 	height: 100%;
 	margin: 0 auto;
+}
+
+.price-and-order {
+	min-width: 100%;
 }
 
 .button-header > a {

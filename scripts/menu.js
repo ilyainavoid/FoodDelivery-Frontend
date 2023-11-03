@@ -147,7 +147,7 @@ function createMenuItem(dish) {
 	`
 		<div class="col-xl-3 d-flex">
 			<div class="menu-item flex-wrap rounded-2 m-2 p-2" id=${dish['id']}>
-				
+				<div class="content-wrap d-flex flex-column position-relative">
 					<div class="menu-item-image-place">
 						<img src="${dish['image']}" alt="" class="menu-item-image">
 						${vegetarianIdicator}
@@ -176,14 +176,21 @@ function createMenuItem(dish) {
 						</div>
 					</div>
 					<p class="menu-item-desc">${dish['description']}</p>
-					<div class="price-and-order rounded p-2 d-flex align-items-center flex-lg-row justify-content-between" id="pao">
+					<div class="price-and-order d-none d-xl-flex position-absolute bottom-0 rounded p-2 d-flex align-items-center flex-lg-row justify-content-between" id="pao">
 						<div class="pricetag d-flex align-items-center flex-lg-row">
 							<i class="fa-solid fa-coins fa me-1"></i>
 							<h6 class="price">Цена: ${dish['price']} руб.</h6>
 						</div>
 						<button class="btn btn-outline-dark order-button">Заказать</button>
 					</div>
-				
+					<div class="price-and-order d-xl-none rounded p-2 d-flex align-items-center flex-lg-row justify-content-between" id="pao">
+						<div class="pricetag d-flex align-items-center flex-lg-row">
+							<i class="fa-solid fa-coins fa me-1"></i>
+							<h6 class="price">Цена: ${dish['price']} руб.</h6>
+						</div>
+						<button class="btn btn-outline-dark order-button">Заказать</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	`
