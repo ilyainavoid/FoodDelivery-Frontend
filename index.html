@@ -1,225 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Food delivery</title>
+	<title>Меню</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap" rel="stylesheet">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="styles/menu.css">
 </head>
+
 <body>
 	<div class="wrapper">
 		<header class="header">
 
-			<div class="header-top authorized">
+			<div class="header-top">
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
 					<div class="container w-75">
 						<a class="navbar-brand" href="index.html">Good<span class='special-word-header-logo'>Food</span></a>
-						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+							aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
 						<div class="collapse navbar-collapse" id="navbarText">
 							<ul class="shown-in-header navbar-nav me-auto mb-2 mb-lg-0">
 								<li class="nav-item">
-									<a class="nav-link active" aria-current="page" href="pages/menu.html">Меню</a>
+									<a class="nav-link active" aria-current="page" href="index.html">Меню</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link active" href="#">Заказы</a>
+									<a class="nav-link active" href="pages/order-history.html">Заказы</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link active" href="#">Корзина <span class="indicator">0</span> </a>
+									<a class="nav-link active" href="pages/cart.html">Корзина <span class="indicator">0</span> </a>
 								</li>
 							</ul>
-							<div class="profile-link p-3">
-								<a href="pages/profile.html"></a>
-							</div>
 							<span class="shown-in-header navbar-text">
 								<button class="button-header" onclick="logout()">Выйти</button>
 							</span>
 						</div>
 					</div>
 				</nav>
-		 	</div>
-
-			 <div class="header-top unauthorized">
-				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-					<div class="container w-75">
-						<a class="navbar-brand" href="#">Good<span class='special-word-header-logo'>Food</span></a>
-						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						<div class="collapse navbar-collapse" id="navbarText">
-							<ul class="shown-in-header navbar-nav me-auto mb-2 mb-lg-0">
-							</ul>
-							<span class="shown-in-header navbar-text">
-								
-									<a href="pages/signin.html">
-										<button class="button-header">
-											Войти
-										</button>
-									</a>
-								
-							</span>
-						</div>
-					</div>
-				</nav>
-		 	</div>
-
-			<div class="header-bottom d-flex justify-content-around align-items-center">
-				<div class="container w-75">
-					<div class="row">
-						<div class="col-md-6 d-flex justify-content-center flex-column">
-							<h1>Самая <span class='special-word-header'>вкусная</span> доставка в твоем городе!</h1>
-							<button class="button-header unauthorized" id="order-button-header">
-								<a href="pages/signin.html">Заказать</a>
-							</button>
-							<button class="button-header authorized" id="order-button-header">
-								<a href="pages/menu.html">Заказать</a>
-							</button>
-						</div>
-					</div>
-				</div>
 			</div>
-		</header>
-		<main class="main">
-			<section class="reasons-why">
-				<div class="container w-75">
-					<div class="row">
-						<div class="col-xl-4 d-flex">
-							<div class="reason-item rounded m-3 flex-fill">
-								<div class="p-4 d-flex justify-content-around align-items-center flex-column">
-									<i class="fa-solid fa-clock fa-10x mb-4"></i>
-									<h3 class="">Скорость</h3>
-									<p>Наша команда нацелена на обеспечение максимальной скорости доставки. Мы стремимся доставить вашу еду в самые кратчайшие сроки,
-										 чтобы вы могли насладиться свежими блюдами, не ждать лишнего времени. Мы постоянно оптимизируем наши маршруты и используем
-										  передовые технологии для быстрой доставки</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 d-flex">
-							<div class="reason-item rounded m-3 flex-fill">
-								<div class="p-4 d-flex justify-content-around align-items-center flex-column">
-									<i class="fa-solid fa-pizza-slice fa-10x mb-4"></i>
-									<h3>Качество</h3>
-									<p>Мы уделяем особое внимание качеству всех ингредиентов и блюд, предлагаемых в нашем меню. 
-										Мы тщательно выбираем поставщиков, следим за свежестью продуктов и следуем высоким стандартам приготовления.
-										 Наши повара готовят каждое блюдо с заботой о его вкусе и внешнем виде, чтобы удовлетворить даже самых взыскательных клиентов</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 d-flex">
-							<div class="reason-item rounded m-3 flex-fill">
-								<div class="p-4 d-flex justify-content-around align-items-center flex-column">
-									<i class="fa-solid fa-hand-holding-dollar fa-10x mb-4"></i>
-									<h3>Низкие цены</h3>
-									<p>Мы понимаем, что экономия также важна для наших клиентов. Поэтому мы предлагаем конкурентоспособные и доступные цены на все блюда в нашем меню.
-										 Мы постоянно работаем над оптимизацией расходов, чтобы предоставить вам отличное соотношение цена-качество.
-										  Наши акции и скидки позволяют вам сэкономить еще больше</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="best-food">
-				<div class="container w-75">
-					<div class="row small-menu-heading">
+
+
+			<main class="main">
+				<div class="container-fluid p-5 pt-0 pb-0">
+					<div class="row menu-heading">
 						<div class="col-12 p-4 d-flex justify-content-center align-items-center">
-							<h2>Лучшие блюда</h2>
+							<h3 id="menu-label">Наше Меню</h3>
 						</div>
 					</div>
-					<div class="row pb-5">
-						<div class="col-xl-3 d-flex">
-							<div class="menu-item rounded mb-3 flex-fill">
-								<div class="p-2 d-flex justify-content-around align-items-center flex-column">
-									<div class="img-place mb-4">
-										<img src="https://mistertako.ru/uploads/products/77888c7e-8327-11ec-8575-0050569dbef0." alt="">
-									</div>
-									<h3>4 сыра</h3>
-									<h5 id="category">Категория: Пицца</h5>
-									<p>XXXXXXXXXXXXX</p>
-									<p class="desc flex-grow-1">4 сыра: «Моцарелла», «Гауда», «Фета», «Дор-блю», сливочно-сырный соус, пряные травы</p>
-									<p class="mt-auto">360 руб.</p>
+
+					<div class="row menu-control m-5 mt-0 mb-2">
+
+						<div class="col-lg-4 category-selection d-flex flex-column p-3">
+							<label for="categories">Категория:</label>
+							<select id="categories-select" name="categories" class="form-control-lg" multiple>
+									<option value="categories=Wok">Вок</option>
+									<option value="categories=Pizza">Пицца</option>
+									<option value="categories=Soup">Супы</option>
+									<option value="categories=Drink">Напитки</option>
+									<option value="categories=Dessert">Десерт</option>
+							</select>
+						</div>
+
+						<div class="col-lg-6 sort-and-vegeterian-selection d-flex flex-column p-3">
+							<div class="row sort-and-vegetarian d-flex flex-fill">
+								<div class="col-12 sort d-flex flex-column">
+									<label for="sorts">Сортировать:</label>
+									<select id="sort-select" name="sorts" class="form-control-lg">
+										<option value="sorting=NameDesc">По имени (от А до Я)</option>
+										<option value="sorting=NameAsc">По имени (от Я до А)</option>
+										<option value="sorting=PriceAsc">По возрастанию цены</option>
+										<option value="sorting=PriceDesc">По убыванию цены</option>
+										<option value="sorting=RatingAsc">По возрастанию рейтинга</option>
+										<option value="sorting=RatingDesc">По убыванию рейтинга</option>
+									</select>
 								</div>
-						</div>
-					</div>
-					<div class="col-xl-3 d-flex">
-							<div class="menu-item rounded mb-3 flex-fill">
-								<div class="p-2 d-flex justify-content-around align-items-center flex-column card-content">
-									<div class="img-place mb-4">
-										<img src="https://mistertako.ru/uploads/products/663ab868-85ec-11ea-a9ab-86b1f8341741.jpg" alt="">
-									</div>
-									<h3>Wok а-ля Диаблo</h3>
-									<h5 id="category">Категория: Вок</h5>
-									<p>XXXXXXXXXXXXX</p>
-									<p class="desc flex-grow-1">Пшеничная лапша обжаренная на воке с колбасками пепперони, маслинами, сладким перцем и перцем халапеньо в томатном соусе с добавлением петрушки. БЖУ на 100 г. Белки, г — 8,18 Жиры, г — 16,33 Углеводы, г — 20,62</p>
-									<p class="mt-auto">330 руб.</p>
+								<div class="col-12 vegeterian mt-3">
+									<label for="vegeterian">Только вегетарианские:</label>
+									<input type="checkbox" id="isVegetarian">
 								</div>
+							</div>
+							
 						</div>
-					</div>
-					<div class="col-xl-3 d-flex">
-							<div class="menu-item rounded mb-3 flex-fill">
-								<div class="p-2 d-flex justify-content-around align-items-center flex-column">
-									<div class="img-place mb-4">
-										<img src="https://mistertako.ru/uploads/products/839d0250-8327-11ec-8575-0050569dbef0." alt="">
-									</div>
-									<h3>Party BBQ</h3>
-									<h5 id="category">Категория: Пицца</h5>
-									<p>XXXXXXXXXXXXX</p>
-									<p class="desc flex-grow-1">Бекон, соленый огурчик, брусника, сыр «Моцарелла», сыр «Гауда», соус BBQ</p>
-									<p class="mt-auto">480 руб.</p>
-								</div>
+							
+						<div class="col-lg-2 apply-button d-flex align-items-center justify-content-center p-3">
+							<button class="btn btn-outline-dark" id="apply-button">Применить</button>
 						</div>
+
 					</div>
-					<div class="col-xl-3 d-flex">
-							<div class="menu-item rounded mb-3 flex-fill">
-								<div class="p-2 d-flex justify-content-around align-items-center flex-column">
-									<div class="img-place mb-4">
-										<img src="https://mistertako.ru/uploads/products/663ab866-85ec-11ea-a9ab-86b1f8341741.jpg" alt="">
-									</div>
-									<h3>Wok болоньезе</h3>
-									<h5 id="category">Категория: Вок</h5>
-									<p>XXXXXXXXXXXXX</p>
-									<p class="desc flex-grow-1">Пшеничная лапша обжаренная на воке с фаршем (Говядина/свинина) и овощами (шампиньоны, перец сладкий, лук красный) в томатном соусе с добавлением чесночно–имбирной заправки и петрушки. БЖУ на 100 г. Белки, г — 8,07 Жиры, г — 15,38 Углеводы, г — 23,22</p>
-									<p class="mt-auto">290 руб.</p>
-								</div>
+
+					<div class="menu-container m-5 mt-0 ">
+						<div class="row align-items-stretch justify-content-start" id="for-items">
+							
 						</div>
+							<div class="navigation m-2 p-2">
+								<nav aria-label="...">
+									<ul class="pagination pagination-sm" id="pagination">
+										
+									</ul>
+								</nav>
+							</div>
 					</div>
-					<div class="row authorized">
-						<div class="col d-flex align-items-center justify-content-center">
-							<button class="btn btn-outline-dark btn-lg menu-button">
-								<a href="#">Перейти в меню</a>
-							</button>
-						</div>
-					</div>
-					<div class="row unauthorized">
-						<div class="col d-flex align-items-center justify-content-center">
-							<button class="btn btn-outline-dark btn-lg menu-button">
-								<a href="pages/menu.html">Перейти в меню</a>
-							</button>
+						
+
+
+				</div>
+			</main>
+
+			<footer class="footer d-flex justify-content-around align-items-center">
+				<div class="conteiner w-75">
+					<div class="row">
+						<div class="col d-flex justify-content-around align-items-center">
+							<p class="footer-text">Developed by Ilya</p>
 						</div>
 					</div>
 				</div>
-			</section>
-		</main>
-		<footer class="footer d-flex justify-content-around align-items-center">
-			<div class="conteiner w-75">
-				<div class="row">
-					<div class="col d-flex justify-content-around align-items-center">
-						<p class="footer-text">Developed by Ilya</p>
-					</div>
-				</div>
-			</div>
-		</footer>
+			</footer>
+
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="scripts/token-handling.js"></script>
-	<script src="../scripts/cart.js"></script>
-	<script src="scripts/homepage.js"></script>
+	<script src="scripts/cart.js"></script>
+	<script src="scripts/menu.js"></script>
 </body>
 </html>
