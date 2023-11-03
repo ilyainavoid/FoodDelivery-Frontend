@@ -126,7 +126,7 @@ function buildMenu(dishList) {
 
 function goToDish(dishId) {
 	localStorage.setItem('dishId', dishId)
-	window.location.href = 'position-in-menu.html'
+	window.location.href = 'pages/position-in-menu.html'
 }
 
 function createMenuItem(dish) {
