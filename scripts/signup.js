@@ -17,7 +17,13 @@ function validateForm() {
 
   const selectedOption = address.options[address.selectedIndex];
 	const addressObject = selectedOption.value;
-	const addressId = JSON.parse(addressObject)['objectGuid'];
+	let addressId;
+	try {
+		const addressId = JSON.parse(addressObject)['objectGuid'];
+	} catch {
+		alert("Адрес заполнен не полностью!")
+	}
+
 
 	let isEmpty = false;
 
@@ -37,13 +43,21 @@ function validateForm() {
 		return;
 	}
 
-	if (password.length < 10 || !/\d/.test(password)) {
-    alert("Пароль должен быть длиннее 10 символов и содержать хотя бы одну цифру!");
+	if (password.length < 6 || !/\d/.test(password)) {
+    alert("Пароль должен быть как минимум 6 символов и содержать хотя бы одну цифру!");
     return;
   }
 
 	if (!phoneRegex.test(cellphone)) {
 		alert("Номер телефона указан неправильно!");
+		return;
+	}
+
+	const date = birthday.split("T");
+	const birthDate = new Date(date[0]);
+	const now = new Date()
+	if(birthDate > now) {
+		alert("Дата рождения не может быть позже, чем сейчас");
 		return;
 	}
 
