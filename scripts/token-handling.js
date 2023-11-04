@@ -18,14 +18,20 @@ async function checkAuth() {
 				if (response.status === 401) {
 					if ((window.location['href'] != "http://localhost:5500/") &&
 					 (window.location['href'] != "http://localhost:5500/index.html")
-					  && (window.location['href'] != "http://localhost:5500/pages/position-in-menu.html")) {
+					  && (window.location['href'] != "http://localhost:5500/pages/position-in-menu.html") &&
+						(window.location['href'] != "http://127.0.0.1:5500/") &&
+					 (window.location['href'] != "http://127.0.0.1:5500/index.html")
+					  && (window.location['href'] != "http://127.0.0.1:5500/pages/position-in-menu.html")) {
 						alert("Для доступа на эту страницу нужно быть авторизованым!");
 						localStorage.setItem('previousUrl', window.location['href']);
 						localStorage.setItem('authorizedStatus', 0)
 						window.location.href = '../pages/signin.html'
-					} else if ((window.location['href'] === "http://localhost:5500/") &&
-					 (window.location['href'] === "http://localhost:5500/index.html") 
-					 && (window.location['href'] === "http://localhost:5500/position-in-menu.html")) {
+					} else if ((window.location['href'] != "http://localhost:5500/") &&
+					(window.location['href'] != "http://localhost:5500/index.html")
+					 && (window.location['href'] != "http://localhost:5500/pages/position-in-menu.html") &&
+					 (window.location['href'] != "http://127.0.0.1:5500/") &&
+					(window.location['href'] != "http://127.0.0.1:5500/index.html")
+					 && (window.location['href'] != "http://127.0.0.1:5500/pages/position-in-menu.html")) {
 						localStorage.setItem('authorizedStatus', 0)
 					}
 				}
