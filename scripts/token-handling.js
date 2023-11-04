@@ -4,7 +4,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function checkAuth() {
 	if((window.location['href'] != "http://localhost:5500/pages/signin.html") &&
-	 (window.location['href'] != "http://localhost:5500/pages/signup.html")) {
+	 (window.location['href'] != "http://localhost:5500/pages/signup.html") && 
+	 (window.location['href'] != "http://127.0.0.1:5500/pages/signin.html") &&
+	 (window.location['href'] != "http://127.0.0.1:5500/pages/signup.html")) {
 		const token = getToken("userToken");
 		await fetch('https://food-delivery.kreosoft.ru/api/account/profile', {
 			method: "GET",
@@ -26,12 +28,12 @@ async function checkAuth() {
 						localStorage.setItem('previousUrl', window.location['href']);
 						localStorage.setItem('authorizedStatus', 0)
 						window.location.href = '../pages/signin.html'
-					} else if ((window.location['href'] != "http://localhost:5500/") &&
-					(window.location['href'] != "http://localhost:5500/index.html")
-					 && (window.location['href'] != "http://localhost:5500/pages/position-in-menu.html") &&
-					 (window.location['href'] != "http://127.0.0.1:5500/") &&
-					(window.location['href'] != "http://127.0.0.1:5500/index.html")
-					 && (window.location['href'] != "http://127.0.0.1:5500/pages/position-in-menu.html")) {
+					} else if ((window.location['href'] === "http://localhost:5500/") &&
+					 (window.location['href'] === "http://localhost:5500/index.html")
+					  && (window.location['href'] === "http://localhost:5500/pages/position-in-menu.html") &&
+						(window.location['href'] === "http://127.0.0.1:5500/") &&
+					 (window.location['href'] === "http://127.0.0.1:5500/index.html")
+					  && (window.location['href'] === "http://127.0.0.1:5500/pages/position-in-menu.html")) {
 						localStorage.setItem('authorizedStatus', 0)
 					}
 				}
