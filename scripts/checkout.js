@@ -79,6 +79,13 @@ function createItem(item, index) {
 	const parent = document.querySelector('.dish-list');
 	const fullOrderPrice = document.querySelector('.fop');
 
+	if (fullOrderPrice.textContent === "") {
+		fullOrderPrice.textContent = "0";
+	}
+
+	let currentValue;
+	let newValue;
+
 	let itemName = item['name'];
 	let itemPrice = item['price'];
 	let totalPrice = item['totalPrice'];
@@ -116,9 +123,11 @@ function createItem(item, index) {
 			</div>
 		</div>
 	`
+
 	parent.innerHTML += itemlayout;
-	let currentPrice = fullOrderPrice.textContent;
-	fullOrderPrice.textContent = currentPrice + totalPrice;
+	currentValue = fullOrderPrice.textContent;
+	newValue = parseInt(currentValue) + parseInt(totalPrice);
+	fullOrderPrice.textContent = newValue;
 }
 
 async function fillUserData() {

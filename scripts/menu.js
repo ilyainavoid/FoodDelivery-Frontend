@@ -147,7 +147,7 @@ function createMenuItem(dish) {
 	`
 		<div class="col-xl-3 d-flex">
 			<div class="menu-item flex-wrap rounded-2 m-2 p-2" id=${dish['id']}>
-				<div class="content-wrap d-flex flex-column position-relative">
+				<div class="content-wrap d-flex flex-column position-relative pb-xl-5">
 					<div class="menu-item-image-place">
 						<img src="${dish['image']}" alt="" class="menu-item-image">
 						${vegetarianIdicator}
